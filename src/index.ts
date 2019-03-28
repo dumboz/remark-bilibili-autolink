@@ -1,7 +1,8 @@
-import transform from './transform';
+import transform, { IOptions } from './transform';
 
-const attacher = () => {
-  return transform;
+const attacher = (options: IOptions) => {
+
+  return transform(options);
 };
 
 export default attacher;

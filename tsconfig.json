@@ -10,10 +10,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "esModuleInterop": true,
-    "types": [
-      "unist",
-      "vfile"
-    ]
+    "moduleResolution": "node"
   },
+  "files": ["src/index.ts"],
+  "include": ["types"],
   "exclude": ["node_modules"]
 }

@@ -3,15 +3,19 @@ import { default as is } from 'unist-util-is';
 import { VFile } from 'vfile';
 import { Node } from 'unist';
 export interface IOptions {
-  marker?: string;
+  video: boolean;
+  article: boolean;
 }
 
-export default (options: IOptions) => (tree: Node, file: VFile) => {
+export default ({ video, article }: IOptions) => (tree: Node, file: VFile) => {
+  if (!(video || article)) {
+    return tree;
+  }
   const visitor = (node: any, index: number, parent: any) => {
     if (is('paragraph', parent) || is('heading', parent)) {
 
       const value = node.value;
-      const re = /([ac]v)\d+/g;
+      const re = new RegExp(String.raw`([${video && 'a'}${article && 'c'}]v)\d+`, 'g');
 
       let result;
 

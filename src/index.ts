@@ -1,8 +1,12 @@
 import transform, { IOptions } from './transform';
 
-const attacher = (options: IOptions) => {
+const defaultSettings: IOptions = {
+  video: true,
+  article: true,
+};
 
-  return transform(options);
+const attacher = (options: IOptions) => {
+  return transform(Object.assign({}, defaultSettings, options));
 };
 
 export default attacher;

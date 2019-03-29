@@ -1,13 +1,12 @@
 import { default as visit } from 'unist-util-visit';
 import { default as is } from 'unist-util-is';
-import { VFile } from 'vfile';
 import { Node } from 'unist';
 export interface IOptions {
   video: boolean;
   article: boolean;
 }
 
-export default ({ video, article }: IOptions) => (tree: Node, file: VFile) => {
+export default ({ video, article }: IOptions) => (tree: Node) => {
   if (!(video || article)) {
     return tree;
   }

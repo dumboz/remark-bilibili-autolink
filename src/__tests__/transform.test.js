@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import remark from 'remark'
-import plugin from './index'
+import plugin from '../index'
 
 const fixtureDirName = "__fixtures__";
 const inputFileName = "input.md";
@@ -9,7 +9,7 @@ const expectedFileName = "expected.md";
 const optionFileName = 'option.js'
 
 describe("Remark transformer", () => {
-  const fixturesDir = path.join(__dirname, fixtureDirName);
+  const fixturesDir = path.join(path.resolve(__dirname, '..'), fixtureDirName);
 
   const names = fs.readdirSync(fixturesDir);
 

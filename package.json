@@ -29,7 +29,8 @@
     "build:lib": "npm run clean:lib && rollup -c -o lib/index.js -f cjs",
     "build:es": "npm run clean:es && rollup -c -o es/index.js -f es",
     "build:dist": "npm run clean:dist && rollup -c -o dist/index.min.js -f umd --name RemarkBiliBiliLink --environment MINIFY",
-    "build": "npm run build:lib && npm run build:dist && npm run build:es && npm run typegen"
+    "build": "npm run build:lib && npm run build:dist && npm run build:es && npm run typegen",
+    "codecov": "codecov"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -39,6 +40,7 @@
     "@commitlint/config-conventional": "^7.5.0",
     "@types/unist": "^2.0.3",
     "@types/vfile": "^3.0.2",
+    "codecov": "^3.2.0",
     "husky": "^1.3.1",
     "jest": "^24.5.0",
     "remark": "^10.0.1",

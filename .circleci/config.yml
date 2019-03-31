@@ -21,11 +21,11 @@ jobs:
           paths:
             - node_modules
       - persist_to_workspace:
-        root: ~/repo
-        paths:
-          - dist
-          - es
-          - lib
+          root: ~/repo
+          paths:
+            - dist
+            - es
+            - lib
 
 workflows:
   version: 2

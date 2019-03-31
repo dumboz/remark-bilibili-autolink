@@ -9,9 +9,15 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "es/index.js",
+  "browser": "dist/index.js",
   "repository": "https://github.com/dumboz/remark-bilibili-link.git",
   "author": "dumboz <heydumboz@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
@@ -23,13 +29,8 @@
     "test": "jest --coverage",
     "test:ci": "jest --ci --coverage --collectCoverage",
     "typegen": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
-    "clean:lib": "rimraf lib",
-    "clean:es": "rimraf es",
-    "clean:dist": "rimraf dist",
-    "build:lib": "npm run clean:lib && rollup -c -o lib/index.js -f cjs",
-    "build:es": "npm run clean:es && rollup -c -o es/index.js -f es",
-    "build:dist": "npm run clean:dist && rollup -c -o dist/index.min.js -f umd --name RemarkBiliBiliLink --environment MINIFY",
-    "build": "npm run build:lib && npm run build:dist && npm run build:es && npm run typegen"
+    "clean": "rimraf lib es dist",
+    "build": "npm run clean && rollup -c && npm run typegen"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

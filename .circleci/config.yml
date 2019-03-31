@@ -58,6 +58,8 @@ workflows:
               only:
                 - develop
                 - master
+            tags:
+              only: /^v.*/
       - publish:
           requires:
             - test

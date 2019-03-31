@@ -20,10 +20,33 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+  build:
+    <<*: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run: yarn install
+      - run: yarn run build
+      - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
 workflows:
   version: 2
-  build:
+  test_build_publish:
     jobs:
       - test
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
 

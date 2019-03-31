@@ -16,6 +16,7 @@ jobs:
             - v1-dependencies-
       - run: yarn install
       - run: yarn run test:ci
+      - run: yarn run codecov
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:

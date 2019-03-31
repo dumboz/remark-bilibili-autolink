@@ -37,6 +37,15 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          path: ~/repo
+      - run:
+          name: login
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run: yarn publish
 
 workflows:
   version: 2
@@ -49,4 +58,12 @@ workflows:
               only:
                 - develop
                 - master
+      - publish:
+          requires:
+            - test
+            - build
+          filters:
+            tags: /^v.*/
+            branches:
+              ignore: /.*/
 

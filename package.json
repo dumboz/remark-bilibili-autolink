@@ -1,5 +1,5 @@
 {
-  "name": "remark-bilibili-link",
+  "name": "remark-bilibili-autolink",
   "version": "0.0.1",
   "description": "Remark plugin to autolink to Bilibili videos and articles",
   "keywords": [

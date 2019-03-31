@@ -7,7 +7,7 @@
     "bilibili"
   ],
   "main": "lib/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "module": "es/index.js",
   "repository": "https://github.com/dumboz/remark-bilibili-link.git",
   "author": "dumboz <heydumboz@gmail.com>",
@@ -21,14 +21,14 @@
     "tslint": "tslint --project tsconfig.json --config tslint.json",
     "tslint:fix": "tslint --project tsconfig.json --config tslint.json --fix",
     "test": "jest --coverage",
-    "type": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
+    "typegen": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "clean:lib": "rimraf lib",
     "clean:es": "rimraf es",
     "clean:dist": "rimraf dist",
     "build:lib": "npm run clean:lib && rollup -c -o lib/index.js -f cjs",
     "build:es": "npm run clean:es && rollup -c -o es/index.js -f es",
-    "build:dist": "npm run clean:dist && rollup -c -o dist/index.js -f umd --name RemarkBiliBiliLink --environment MINIFY",
-    "build": "npm run build:lib && npm run build:dist && npm run type"
+    "build:dist": "npm run clean:dist && rollup -c -o dist/index.min.js -f umd --name RemarkBiliBiliLink --environment MINIFY",
+    "build": "npm run build:lib && npm run build:dist && npm run build:es && npm run typegen"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

@@ -35,13 +35,17 @@ jobs:
           paths:
             - node_modules
       - persist_to_workspace:
-          root: ~/repo
-          paths: .
+          root: /tmp/workspace
+          paths:
+            - dist
+            - es
+            - lib
   publish:
     <<: *defaults
     steps:
+      - checkout
       - attach_workspace:
-          path: ~/repo
+          at: /tmp/workspace
       - run:
           name: login
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc

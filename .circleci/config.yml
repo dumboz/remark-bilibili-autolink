@@ -63,7 +63,8 @@ workflows:
             - test
             - build
           filters:
-            tags: /^v.*/
+            tags:
+              only: /^v.*/
             branches:
               ignore: /.*/
 

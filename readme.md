@@ -41,7 +41,7 @@ remark().use(bili, {
 
 `processor.use(bili[, options])`
 
-This will replace words that starts with 'av'/'cv' inside `Paragraph` and `Heading` elements (see [mdast](https://github.com/syntax-tree/mdast)) with links pointing to corresponding video/article.
+This will replace words that starts with 'av'/'bv'/'cv' inside `Paragraph` and `Heading` elements (see [mdast](https://github.com/syntax-tree/mdast)) with links pointing to corresponding video/article.
 
 - article (boolean, default: `true`).
 
